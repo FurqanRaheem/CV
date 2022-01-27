@@ -73,14 +73,10 @@ for section in doc.sections:
     section.left_margin = Cm(margin)
     section.right_margin = Cm(margin)
 
-# name = input("Name: ")
-# number = input("Phone number: ")
-# email = input("Email: ")
-# address = input("Address: ")
-name = "Furqan Khan"
-number = "07746435680"
-email = "furqanraheem10@gmail.com"
-address = "191 Tennyson Place, Bradford BD3 0AE"
+name = input("Name: ")
+number = input("Phone number: ")
+email = input("Email: ")
+address = input("Address: ")
 
 nameHeading = doc.add_paragraph()
 nameHeading.alignment = text.WD_ALIGN_PARAGRAPH.CENTER
@@ -95,9 +91,7 @@ run.font.size = Pt(12)
 
 # Personal Statement
 addHeading("Personal Statement")
-# doc.add_paragraph(input("Personal Statement:\n"))
-doc.add_paragraph(
-    "An A-levels student with a proven leadership ability in an educational, fitness and professional setting. Being resilient and confident, I work well under pressure and remain positive in any situation I face, thriving off challenges. I provide timely, efficient and accurate support where required to meet the business needs. I have a friendly personality, an inquiring mind and a hunger for acquiring knowledge. I always aim to give 100% to any given task and remain motivated to work well within a team and on my own initiative. I am currently seeking to move up in my career, take on more responsibilities and learn new skills in a new environment. I am passionate to use my current skills and experience to help a business meet its goals and simultaneously broaden my own knowledge and skillset.")
+doc.add_paragraph(input("Personal Statement:\n"))
 
 # Key Skills
 addHeading("Key Skills")
@@ -171,6 +165,18 @@ if pyip.inputYesNo("Would you like to add a languages section? ") == "yes":
         else:
             break
 
-# Save Document
+# References
+if pyip.inputYesNo("Would you like to add a references? ") == "yes":
+    addHeading("References")
+    while not pyip.inputYesNo("More references (Yes/No) ") == "no":
+        referee = input("Referee Name: ")
+        jobTitle = input("Job Title: ")
+        company = input("Company: ")
+        address = input("Address: ")
+        email = input("Email: ")
+        phoneNumber = input("Phone Number: ")
 
+        doc.add_paragraph(f"{referee}\n{jobTitle} | {company}\n{phoneNumber} | {email}\n{address}")
+
+# Save Document
 doc.save(f"{os.getcwd()}\\cv.docx")
